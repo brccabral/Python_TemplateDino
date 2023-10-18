@@ -1,6 +1,6 @@
 import templateplay as tp
 
-region = (10, 10, 300, 200)
+region = (960, 150, 960, 200)
 
 template_images = tp.load_templates("assets")
 
@@ -10,5 +10,6 @@ while tp.running:
     template_positions = tp.find_templates(screen, template_images)
     tp.show(screen, template_positions)
     count += 1
-    if count >= 2:
+    print(count)
+    if count >= 20:
         tp.running = False
