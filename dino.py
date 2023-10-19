@@ -1,16 +1,13 @@
-import cv2
-import templateplay as tp
+from templateplay import TemplatePlay
 
-region = (960, 150, 1850, 350)  # X1, Y1, X2, Y2
+region = (1113, 118, 1725, 350)  # X1, Y1, X2, Y2
+
+tp = TemplatePlay()
 
 template_images = tp.load_templates("assets")
-window_capture = tp.WindowCapture()
 
 count = 0
 while tp.running:
-    screen = window_capture.screenshot(region)
+    screen = tp.window.screenshot(region)
     template_positions = tp.find_templates(screen, template_images)
-    tp.show(screen, template_positions)
-    if cv2.waitKey(1) == ord('q'):
-        cv2.destroyAllWindows()
-        tp.running = False
+    screen = tp.draw_rectangles(screen, template_positions)
