@@ -7,7 +7,7 @@ from templateplay import TemplatePlay
 def main():
     region = (1113, 118, 1725, 350)  # X1, Y1, X2, Y2
 
-    tp = TemplatePlay()
+    tp = TemplatePlay(window_name=None, region=region)
 
     template_images = tp.load_templates("assets")
     # tp.init_control_gui()
@@ -37,7 +37,7 @@ def main():
 
     loop_time = time()
     while tp.running:
-        screen = tp.window.screenshot(region)
+        screen = tp.window.screenshot()
         processed = tp.apply_hsv_filter(screen)
         cv2.imshow("Processed", processed)
         template_positions = tp.find_templates(screen, template_images)
