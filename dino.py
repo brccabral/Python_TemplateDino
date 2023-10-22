@@ -40,6 +40,7 @@ def main():
         screen = tp.window.screenshot()
         processed = tp.apply_hsv_filter(screen)
         cv2.imshow("Processed", processed)
+        template_positions = tp.find_templates(processed, template_images)
         tp.draw_rectangles(screen, template_positions)
         tp.show(screen)
 
