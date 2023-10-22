@@ -40,8 +40,8 @@ def main():
         screen = tp.window.screenshot()
         processed = tp.apply_hsv_filter(screen)
         cv2.imshow("Processed", processed)
-        template_positions = tp.find_templates(screen, template_images)
-        screen = tp.draw_rectangles(screen, template_positions)
+        tp.draw_rectangles(screen, template_positions)
+        tp.show(screen)
 
         print(f"FPS {1/(time()-loop_time):.2f}")
         loop_time = time()
